@@ -34,3 +34,16 @@ angular.module('authService', []);
             });
     }
 })
+
+.factory('AuthToken', function ($window) {
+    var authFactory = {};
+    authFactory.getToken = function () {
+        return $window.localStorage.getItem('token');
+    }
+    authFactory.setToken = function (token) {
+        if (token)
+            $window.localStorage.setItem('token', token);
+        else
+            $window.localStorage.removeItem('token');
+    }
+})
