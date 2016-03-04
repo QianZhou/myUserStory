@@ -1,4 +1,6 @@
-angular.module('authService', []);
+angular.module('authService', [])
+
+
 .factory('Auth', function ($http, $q, AuthToken) {
     var authFactory = {};
 
@@ -50,7 +52,7 @@ angular.module('authService', []);
     return authTokenFactory;
 })
 
-.factory('AuthInterceptor', function ($q, $location, AuthToken)) {
+.factory('AuthInterceptor', function ($q, $location, AuthToken) {
     var interceptorFacotry = {};
     interceptorFacotry.request = function (config) {
         var token = AuthToken.getToken();
@@ -65,4 +67,5 @@ angular.module('authService', []);
 
         return $q.reject(response);
     }
-}
+    return interceptorFacotry;
+});
